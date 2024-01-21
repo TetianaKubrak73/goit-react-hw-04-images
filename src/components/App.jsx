@@ -80,7 +80,7 @@ const App = () => {
     if (searchQuery || galleryPage > 1) {
       fetchGalleryItems();
     }
-  }, [searchQuery, galleryPage]);
+  }, [searchQuery, galleryPage, galleryItems]);
 
   const handleFormSubmit = query => {
     setSearchQuery(query);
