@@ -38,7 +38,6 @@ const App = () => {
             largeImageURL,
           })
         );
-        const currentData = [...galleryItems, ...newData];
 
         setGalleryItems(prevGalleryItems => [...prevGalleryItems, ...newData]);
 
@@ -51,7 +50,7 @@ const App = () => {
           return;
         }
 
-        if (currentData.length >= data.totalHits) {
+        if (Math.ceil(data.totalHits / 12) <= galleryPage) {
           setLoading(false);
           setIsButtonShow(false);
           setError(false);
@@ -80,7 +79,7 @@ const App = () => {
     if (searchQuery || galleryPage > 1) {
       fetchGalleryItems();
     }
-  }, [searchQuery, galleryPage, galleryItems]);
+  }, [searchQuery, galleryPage]);
 
   const handleFormSubmit = query => {
     setSearchQuery(query);
